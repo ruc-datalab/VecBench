@@ -1,0 +1,43 @@
+pgvector:
+  hnsw:
+    - index_column: "image_features"
+      distance: vector_l2_ops
+      params:
+        - m: 16
+          ef_construction: 64
+    - index_column: "text_features"
+      distance: vector_l2_ops
+      params:
+        - m: 16
+          ef_construction: 64
+  ivfflat:
+    - index_column: "image_features"
+      distance: vector_l2_ops
+      params:
+        - lists: 100
+    - index_column: "text_features"
+      distance: vector_l2_ops
+      params:
+        - lists: 100
+
+milvus:
+  hnsw:
+    - index_column: "image_features"
+      distance: L2
+      params:
+        - m: 16
+          ef_construction: 64
+    - index_column: "text_features"
+      distance: L2
+      params:
+        - m: 16
+          ef_construction: 64
+  ivfflat:
+    - index_column: "image_features"
+      distance: L2
+      params:
+        - nlist: 100
+    - index_column: "text_features"
+      distance: L2
+      params:
+        - nlist: 100

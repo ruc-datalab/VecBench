@@ -1,0 +1,10 @@
+pgvector:
+  host: localhost
+  port: 5432
+  dbname: postgres
+  user: postgres
+  password: 12345678
+
+milvus:
+  host: "192.168.114.130"
+  port: 19530

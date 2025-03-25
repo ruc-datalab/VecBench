@@ -1,0 +1,108 @@
+pgvector:
+  table_name: my_table
+  columns:
+    - name: movieid
+      type: TEXT
+      constraints: PRIMARY KEY
+    - name: name
+      type: TEXT
+      constraints: ""
+    - name: url
+      type: TEXT
+      constraints: ""
+    - name: time
+      type: INT
+      constraints: ""
+    - name: genre
+      type: TEXT[]
+      constraints: ""
+    - name: release_time
+      type: DATE
+      constraints: ""
+    - name: country
+      type: TEXT
+      constraints: ""
+    - name: directors
+      type: TEXT[]
+      constraints: ""
+    - name: writers
+      type: TEXT[]
+      constraints: ""
+    - name: stars
+      type: TEXT[]
+      constraints: ""
+    - name: intro
+      type: TEXT
+      constraints: ""
+    - name: image_features
+      type: VECTOR
+      dimension: 512
+      constraints: ""
+    - name: text_features
+      type: VECTOR
+      dimension: 1024
+      constraints: ""
+
+milvus:
+  table_name: my_table
+  columns:
+    - name: movieid
+      type: VARCHAR
+      primary: True
+      description: "movieid"
+      max_length: 50
+    - name: name
+      type: VARCHAR
+      description: "name"
+      max_length: 200
+    - name: url
+      type: VARCHAR
+      description: "url"
+      max_length: 100
+    - name: time
+      type: INT16
+      description: "time"
+    - name: genre
+      type: ARRAY
+      description: "genre"
+      element_type: VARCHAR
+      max_length: 50
+      max_capacity: 15
+    - name: release_time
+      type: VARCHAR
+      description: "release_time"
+      max_length: 50
+    - name: country
+      type: VARCHAR
+      description: "country"
+      max_length: 50
+    - name: directors
+      type: ARRAY
+      description: "directors"
+      element_type: VARCHAR
+      max_length: 50
+      max_capacity: 3
+    - name: writers
+      type: ARRAY
+      description: "writers"
+      element_type: VARCHAR
+      max_length: 50
+      max_capacity: 3
+    - name: stars
+      type: ARRAY
+      description: "stars"
+      element_type: VARCHAR
+      max_length: 50
+      max_capacity: 3
+    - name: intro
+      type: VARCHAR
+      description: "intro"
+      max_length: 1000
+    - name: image_features
+      type: FLOAT_VECTOR
+      dimension: 512
+      description: "image_vectors(512)"
+    - name: text_features
+      type: FLOAT_VECTOR
+      dimension: 1024
+      description: "text_vectors(1024)"
