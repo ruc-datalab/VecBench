@@ -101,48 +101,7 @@
 #             execution_times.append(execution_time)
 #         except Exception as e:
 #             print(f"执行搜索操作时出现错误: {e}")
-#
-# def calculate_recall(ground_truth, milvus_result):
-#     """
-#     计算召回率的函数
-#     """
-#     # 处理ground_truth，提取关键信息，这里假设关键信息是电影名称
-#     gt_movies = set()
-#     for item in ground_truth[2]["result"]:
-#         gt_movies.add(item[0])
-#
-#     # 处理milvus查询结果，提取关键信息（这里从复杂字符串中提取电影名称）
-#     milvus_movies = set()
-#     for entity_str in milvus_result[0]:
-#         # print(entity_str)
-#         # print(type(entity_str))
-#         # try:
-#         #     entity_dict = ast.literal_eval(entity_str)  # 将字符串转换为字典
-#         #     if isinstance(entity_dict, dict):
-#         movie_name = entity_str.id
-#         if movie_name:
-#             milvus_movies.add(movie_name)
-#         # except (SyntaxError, ValueError):
-#         #     print("error")
-#         #     continue
-#     print(gt_movies)
-#     print(milvus_movies)
-#     # 计算召回率
-#     correct_count = len(gt_movies & milvus_movies)
-#     recall = correct_count / len(gt_movies) if gt_movies else 0
-#     return recall
-#
-# with open('./data/ground_truth.json', 'r') as file:  # 将'ground_truth.json'替换为实际的文件名
-#     ground_truth = json.load(file)
-# recall = calculate_recall(ground_truth, res)
-# print(recall)
-# execution_recalls.append(recall)
-#
-# avg_execution_time = np.mean(execution_times)
-# avg_execution_recall = np.mean(execution_recalls)
-# print("*"*10)
-# print(avg_execution_time)
-# print(avg_execution_recall)
+
 
 import csv
 def clean_csv_data(input_file_path, output_file_path):
