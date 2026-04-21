@@ -1,13 +1,62 @@
 # VecBench
 
-A unified benchmark framework for evaluating vector databases under hybrid vector-scalar query workloads. VecBench supports multiple databases, datasets, index algorithms, and provides comprehensive metrics including recall, latency, QPS, and incremental operation performance.
+A controllable benchmark framework for evaluating vector databases under filtered vector search workloads. VecBench supports multiple databases, datasets, index algorithms, and provides comprehensive metrics including recall, latency, QPS, and incremental operation performance. **We also maintain an online leaderboard with benchmark results at http://www.x-bench.xin**
+
+## Overview
+
+Filtered vector search—retrieving nearest neighbors under structured constraints (e.g., equality, range, containment)—is a core operation in modern vector databases and LLM systems (e.g., RAG).
+
+However, existing benchmarks suffer from three major limitations:
+
+1. **Limited data realism**
+    Most benchmarks rely on low-dimensional or small-scale datasets, which do not reflect real-world scenarios involving millions of high-dimensional vectors.
+
+2. **Simplistic query workloads**
+
+   Queries are typically generated using random filters, ignoring two critical factors:
+
+   - **Selectivity** (how many data points pass the filter)
+   - **Filter correlation** (how filtering conditions align with vector similarity)
+
+3. **Incomplete evaluation metrics**
+    Prior work evaluates isolated metrics (e.g., recall or latency), without capturing system-level trade-offs, especially under dynamic updates.
+
+To address these issues, we propose **VecBench**, a **controllable benchmark** for holistic evaluation of filtered vector search.
+
+## Framework Architecture
+
+<!-- TODO: Insert benchmark architecture figure here --> <!-- Suggested: Figure showing Data Synthesizer + Query Generator + Workload Executor -->
+
+<img src="imgs\framework.png" alt="Image text" style="zoom:50%;" />
+
+VecBench follows a modular pipeline:
+
+1. Data loading and preprocessing
+2. Controlled data generation (dimension & scale)
+3. Query synthesis (selectivity & correlation)
+4. Execution (multi-phase workload)
+5. Metrics collection and aggregation
+
+## Comparison with Existing Work
+
+<!-- TODO: Insert comparison figure here --> <!-- Suggested: Table or chart comparing VecBench with BigANN / VectorDBBench -->
+
+<img src="imgs\comparison.png" alt="Image text" style="zoom:80%;" />
+
+Compared to existing benchmarks, VecBench provides:
+
+- Controllable data generation
+- Adjustable selectivity and filter correlation
+- Multi-type predicates (equality, range, containment)
+- Dynamic update evaluation
+- End-to-end holistic metrics
 
 ## Features
 
 - **Multi-database support**: Milvus, pgvector (PostgreSQL), Qdrant, Weaviate
 - **Multiple datasets**: YFCC (10M, 1920-dim), SIFT (1M, 128-dim), GLOVE (1.2M, 200-dim), GIST (1M, 960-dim)
 - **Hybrid queries**: Vector similarity search combined with scalar filters (equality, range, contains)
-- **Multiple index algorithms**: HNSW, IVFFlat, DiskANN
+- **Multiple index algorithms**: HNSW, IVFFlat, DiskANN, ACORN ...
 - **Concurrent benchmarking**: Multi-threaded workload execution with warm-up phase and QPS measurement
 - **Incremental operations**: Insert, Update, Delete with configurable ratios
 - **Query analysis**: Filter rate and relevance analysis with automatic query modification
@@ -404,4 +453,29 @@ VecBench reports the following metrics:
 
 ## License
 
-<!-- TODO: Add license -->
+### Code License
+
+This project is licensed under the MIT License.
+ See the LICENSE file for full details.
+
+### Paper License
+
+The associated paper is licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License.
+
+------
+
+## Citation
+
+If you use this benchmark in your research or systems, please cite our paper:
+
+```
+@article{vecbench2026,
+  title={VecBench: A Controllable Benchmark for Filtered Vector Search},
+  author={Zhang, Xiang and Zhang, Chao and Fan, Ju and Li, Guoliang and Du, Xiaoyong},
+  journal={Proceedings of the ACM on Management of Data (SIGMOD)},
+  year={2026},
+  doi={10.1145/3802125}
+}
+```
+
+If you find this project helpful, please consider giving it a star ⭐ and citing our work.
