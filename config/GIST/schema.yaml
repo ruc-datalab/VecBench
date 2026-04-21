@@ -1,0 +1,61 @@
+pgvector:
+  table_name: my_table
+  columns:
+    - name: id
+      type: INT
+      constraints: 'PRIMARY KEY'
+    - name: equal
+      type: smallint
+      constraints: ""
+    - name: image_vec
+      type: VECTOR
+      dimension: 960
+      constraints: ""
+
+milvus:
+  table_name: my_table
+  columns:
+    - name: id
+      type: INT64
+      primary: True
+      description: "id"
+    - name: equal
+      type: INT16
+      description: "equal_val"
+    - name: image_vec
+      type: FLOAT_VECTOR
+      dimension: 960
+      description: "image_vec(960)"
+
+qdrant:
+  table_name: my_table
+  hnsw_config:
+    m: 16
+    ef_construct: 64
+    full_scan_threshold: 10000
+    on_disk: false
+  columns:
+    - name: id
+      type: integer
+      description: "id (used as point ID)"
+    - name: equal
+      type: integer
+      description: "equal_val"
+    - name: image_vec
+      type: FLOAT_VECTOR
+      dimension: 960
+      description: "Euclid"
+
+weaviate:
+  table_name: my_table
+  hnsw_config:
+    M: 16
+    efConstruction: 64
+  columns:
+    - name: equal
+      type: integer
+      description: "equal_val"
+    - name: image_vec
+      type: FLOAT_VECTOR
+      dimension: 960
+      description: "l2"

@@ -1,0 +1,55 @@
+pgvector:
+  hnsw:
+    - index_column: "image_vec"
+      distance: vector_l2_ops
+      params:
+        - m: 16
+          ef_construction: 64
+  ivfflat:
+    - index_column: "image_vec"
+      distance: vector_l2_ops
+      params:
+        - lists: 3000
+  scalar_index:
+    - index_column: "equal"
+      type: btree
+    - index_column: "range"
+      type: btree
+    - index_column: "tags"
+      type: GIN
+        
+milvus:
+  hnsw:
+    - index_column: "image_vec"
+      distance: L2
+      params:
+        - m: 16
+          ef_construction: 64
+  ivfflat:
+    - index_column: "image_vec"
+      distance: L2
+      params:
+        - nlist: 3000
+  diskann:
+    - index_column: "image_vec"
+      distance: L2
+      params: []
+  scalar_index:
+    - index_column: "equal"
+    - index_column: "range"
+    - index_column: "tags"
+
+qdrant:
+  scalar_index:
+    - index_column: "equal"
+      data_type: "integer"
+    - index_column: "range"
+      data_type: "float"
+    - index_column: "tags"
+      data_type: "integer"
+
+search_params:
+  hnsw_: [10, 10, 20, 40, 80, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
+  hnsw: [800]
+  ivfflat: [50]
+  diskann: [100, 1000]

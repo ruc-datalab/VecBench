@@ -1,0 +1,28 @@
+YFCC:
+  - name: query1
+    vector_field: image_vec
+    reference_vector_name: 9204725
+    scalar_filters:
+      - field: equal
+        operator: "=="
+        value: 2
+        logic: and
+    limit: 100
+  - name: query2
+    vector_field: image_vec
+    reference_vector_name: 9351380
+    scalar_filters:
+      - field: equal
+        operator: "=="
+        value: 4
+        logic: and
+    limit: 100
+  - name: query3
+    vector_field: image_vec
+    reference_vector_name: 7153043
+    scalar_filters:
+      - field: equal
+        operator: "=="
+        value: 2
+        logic: and
+    limit: 100

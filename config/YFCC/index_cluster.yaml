@@ -1,0 +1,60 @@
+pgvector:
+  hnsw:
+    - index_column: "image_vec"
+      distance: vector_l2_ops
+      params:
+        - m: 16
+          ef_construction: 64
+  ivfflat:
+    - index_column: "image_vec"
+      distance: vector_l2_ops
+      params:
+        - lists: 3000
+  scalar_index:
+    - index_column: "equal"
+      type: btree
+
+pgvector_default:
+  hnsw:
+    - index_column: "image_vec"
+      distance: vector_l2_ops
+      params:
+        - m: 16
+          ef_construction: 64
+  ivfflat:
+    - index_column: "image_vec"
+      distance: vector_l2_ops
+      params:
+        - lists: 3000
+  scalar_index:
+    - index_column: "equal"
+      type: btree 
+
+milvus:
+  hnsw:
+    - index_column: "image_vec"
+      distance: L2
+      params:
+        - m: 16
+          ef_construction: 64
+  ivfflat:
+    - index_column: "image_vec"
+      distance: L2
+      params:
+        - nlist: 3000
+  diskann:
+    - index_column: "image_vec"
+      distance: L2
+      params: []
+  scalar_index:
+    - index_column: "equal"
+
+qdrant:
+  scalar_index:
+    - index_column: "equal"
+      data_type: "integer"
+
+search_params:
+  hnsw: [100]
+  ivfflat: [3, 30]
+  diskann: [100, 1000]

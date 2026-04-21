@@ -1,0 +1,162 @@
+YFCC:
+  - name: query1
+    vector_field: image_vec
+    reference_vector_name: 2
+    scalar_filters:
+      - field: equal
+        operator: "=="
+        value: 1
+        logic: or
+      - field: equal
+        operator: "=="
+        value: 2
+        logic: or
+      - field: equal
+        operator: "=="
+        value: 3
+        logic: or
+      - field: equal
+        operator: "=="
+        value: 4
+        logic: or
+      - field: equal
+        operator: "=="
+        value: 5
+        logic: or
+      - field: equal
+        operator: "=="
+        value: 6
+        logic: or
+      - field: equal
+        operator: "=="
+        value: 7
+        logic: or
+    limit: 100
+
+  - name: query2
+    vector_field: image_vec
+    reference_vector_name: 4
+    scalar_filters:
+      - field: equal
+        operator: "=="
+        value: 2
+        logic: and
+    limit: 100
+
+  - name: query3
+    vector_field: image_vec
+    reference_vector_name: 12
+    scalar_filters:
+      - field: equal
+        operator: "=="
+        value: 90
+        logic: and
+    limit: 100
+
+  - name: query4
+    vector_field: image_vec
+    reference_vector_name: 3
+    scalar_filters:
+      - field: range
+        operator: "<"
+        value: 1.1
+        logic: and
+      - field: range
+        operator: ">"
+        value: 0
+        logic: and
+    limit: 100
+
+  - name: query5
+    vector_field: image_vec
+    reference_vector_name: 18
+    scalar_filters:
+      - field: range
+        operator: ">"
+        value: 3.6
+        logic: and
+      - field: range
+        operator: "<"
+        value: 196
+        logic: and
+    limit: 100
+
+  - name: query6
+    vector_field: image_vec
+    reference_vector_name: 462
+    scalar_filters:
+      - field: range
+        operator: ">"
+        value: 22
+        logic: and
+      - field: range
+        operator: "<"
+        value: 196
+        logic: and
+    limit: 100
+
+  - name: query7
+    vector_field: image_vec
+    reference_vector_name: 2
+    scalar_filters:
+      - field: tags
+        operator: contains
+        value: 23
+        logic: or
+      - field: tags
+        operator: contains
+        value: 29
+        logic: or
+    limit: 100
+  
+  - name: query8
+    vector_field: image_vec
+    reference_vector_name: 3
+    scalar_filters:
+      - field: tags
+        operator: contains
+        value: 17
+        logic: and
+    limit: 100
+
+  - name: query9
+    vector_field: image_vec
+    reference_vector_name: 397
+    scalar_filters:
+      - field: tags
+        operator: contains
+        value: 487
+        logic: and
+    limit: 100
+
+
+YFCC_cluster:
+  - name: query1
+    vector_field: image_vec
+    reference_vector_name: 9204725
+    scalar_filters:
+      - field: equal
+        operator: "=="
+        value: 2
+        logic: and
+    limit: 100
+
+  - name: query2
+    vector_field: image_vec
+    reference_vector_name: 9351380
+    scalar_filters:
+      - field: equal
+        operator: "=="
+        value: 4
+        logic: and
+    limit: 100
+    
+  - name: query3
+    vector_field: image_vec
+    reference_vector_name: 7153043
+    scalar_filters:
+      - field: equal
+        operator: "=="
+        value: 2
+        logic: and
+    limit: 100

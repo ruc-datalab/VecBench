@@ -1,0 +1,87 @@
+pgvector:
+  table_name: my_table
+  columns:
+    - name: id
+      type: INT
+      constraints: 'PRIMARY KEY'
+    - name: equal
+      type: smallint
+      constraints: ""
+    - name: range
+      type: decimal
+      constraints: ""
+    - name: tags
+      type: integer[]
+      constraints: ""
+    - name: image_vec
+      type: VECTOR
+      dimension: 192
+      constraints: ""
+
+milvus:
+  table_name: my_table
+  columns:
+    - name: id
+      type: INT64
+      primary: True
+      description: "id"
+    - name: equal
+      type: INT16
+      description: "equal_val"
+    - name: range
+      type: FLOAT
+      description: "range_val"
+    - name: tags
+      type: ARRAY
+      description: "tags"
+      element_type: INT32
+      max_capacity: 1600
+    - name: image_vec
+      type: FLOAT_VECTOR
+      dimension: 1920
+      description: "image_vec(192)"
+
+qdrant:
+  table_name: my_table
+  hnsw_config:
+    m: 16
+    ef_construct: 64
+    full_scan_threshold: 10000
+    on_disk: false
+  columns:
+    - name: id
+      type: integer
+      description: "id (used as point ID)"
+    - name: equal
+      type: integer
+      description: "equal_val"
+    - name: range
+      type: float
+      description: "range_val"
+    - name: tags
+      type: array
+      description: "tags"
+    - name: image_vec
+      type: FLOAT_VECTOR
+      dimension: 192
+      description: "Euclid"
+
+weaviate:
+  table_name: my_table
+  hnsw_config:
+    M: 16
+    efConstruction: 64
+  columns:
+    - name: equal
+      type: integer
+      description: "equal_val"
+    - name: range
+      type: FLOAT
+      description: "range_val"
+    - name: tags
+      type: ARRAY
+      description: "tags"
+    - name: image_vec
+      type: FLOAT_VECTOR
+      dimension: 192
+      description: "l2"

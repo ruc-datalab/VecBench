@@ -1,0 +1,45 @@
+pgvector:
+  hnsw:
+    - index_column: "image_vec"
+      distance: vector_l2_ops
+      params:
+        - m: 16
+          ef_construction: 64
+  ivfflat:
+    - index_column: "image_vec"
+      distance: vector_l2_ops
+      params:
+        - lists: 1000
+  scalar_index:
+    - index_column: "equal"
+      type: btree
+        
+milvus:
+  hnsw:
+    - index_column: "image_vec"
+      distance: L2
+      params:
+        - m: 16
+          ef_construction: 64
+  ivfflat:
+    - index_column: "image_vec"
+      distance: L2
+      params:
+        - nlist: 1000
+  diskann:
+    - index_column: "image_vec"
+      distance: L2
+      params: []
+  scalar_index:
+    - index_column: "equal"
+
+qdrant:
+  scalar_index:
+    - index_column: "equal"
+      data_type: "integer"
+
+search_params:
+  hnsw: [100, 100, 150, 200, 300, 400, 600, 800, 1000]
+  ivfflat: [1, 1, 2, 5, 10, 20, 30, 50, 80, 100, 150, 200, 300, 500, 800, 1000]
+  diskann: [100, 100, 120, 200, 300, 400, 600, 800, 1000]
+  hnsw_copy: [10, 10, 20, 40, 60, 80, 120, 200, 300, 400, 600, 800, 1000]

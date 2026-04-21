@@ -1,0 +1,37 @@
+SIFT:
+- name: query1
+  vector_field: image_vec
+  reference_vector_name: 196830
+  scalar_filters:
+  - field: equal
+    operator: ==
+    value: 2
+    logic: and
+  limit: 100
+- name: query2
+  vector_field: image_vec
+  reference_vector_name: 568671
+  scalar_filters:
+  - field: equal
+    operator: ==
+    value: 97
+    logic: and
+  limit: 100
+- name: query3
+  vector_field: image_vec
+  reference_vector_name: 224929
+  scalar_filters:
+  - field: equal
+    operator: ==
+    value: 70
+    logic: and
+  limit: 100
+- name: query4
+  vector_field: image_vec
+  reference_vector_name: 684488
+  scalar_filters:
+  - field: equal
+    operator: ==
+    value: 275
+    logic: and
+  limit: 100
